@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.253), rgba(255, 208, 0, 0.685)  );
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: 'Syne Mono', monospace;
+
+    background-color: rgba(255, 255, 255, 0.3);
+    &__item {
+        height: 100%;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        //flex-grow: 0.333;
+    }
+
+    &__menu {
+        position: relative;
+        cursor: pointer;
+        transition: 0.4s;
+        padding-right: 25px;
+
+        span {
+            right: 35px;
+            transition: 0.5s;
+        }
+        span, span::before, span::after {
+            height: 2px;
+            width: 20px;
+            position: absolute;
+            background-color: black;
+            transition: 0.5s;
+        }
+        span::before{
+            transform: translateY(6px);
+            content: '';
+        }
+        span::after{
+            transform: translateY(-6px);
+            content: '';
+        }
+    }
+
+    &__menu:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+        transition: 0.4s;
+
+    }
+    &__menu:active {
+        background-color: rgba(255, 0, 0, 0.3);
+        transition: 0.1s;
+    }
+}
+
+
+
+.cell-container {
+
+    position: relative;
+    width: 630px;
+    height: 630px;
+    margin: 10px auto;
+    border: 2px solid black;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cell {
+    position: absolute;
+    background-color: rgb(199, 199, 199);
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 1px;
+    font-size: 60px;
+    font-family: 'Syne Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 2;
+}
+.empty {
+    opacity: 0;
+}
+.hide {
+    display: none;
+}
+.hovered {
+    opacity: 0.5;
+}
+
+.hamburger-backdrop {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 0;
+    height: calc(100% - 50px);
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.8s ease-in-out;
+    z-index: 3;
+}
+
+.closeHamburgerMenu {
+    height: 100%;
+    width: 50%;
+}
+
+.hamburger {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    background-color: blanchedalmond;
+    text-align: center;
+    z-index: 3;
+
+    &_item {
+        position: relative;
+        width: 80%;
+        height: 40px;
+        margin: 1%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-size: 0;
+        transition: 0.8s ease-in-out;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    &_item::before, &_item::after {
+        height: 2px;
+        width: 60%;
+        background-color: black;
+        position: absolute;
+        content: "";
+        transform: scaleX(0);
+        transition: transform 0.5s;
+    }
+    
+    &_item::after {
+        top: 5px;
+        transform-origin: left;
+    }
+    &_item::before{
+        bottom: 5px;
+        transform-origin: right;
+    }
+    &_item:hover::before, &_item:hover::after {
+        transform: scaleX(1);
+    }
+
+}
+
+.hamburger-visible {
+    width: 100%;
+    transition: 0.8s ease-in-out;
+    .item-visible {
+        font-size: 30px;
+        transition: 0.6s ease-in-out;
+    }
+}
+
+.popup-wrapper {
+    display: none;
+}
+
+.popup-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 4;
+ 
+}
+
+.popup {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 80%;
+    height: 80%;
+    z-index: 5;
+    font-family: 'Syne Mono', monospace;
+ 
+}
+.popup-content {
+    display: none;
+    h2 {
+        font-size: 35px;
+        padding: 25px 0;
+        text-align: center;
+    }
+    p {
+        margin: 15px;
+        font-size: 30px;
+    }
+}
+
+.best-scores {
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+
+.setting-popup {
+    text-align: center;
+    .select-box, .select-label, .image-box {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+}
+
+.setting {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sound {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+.savedGames-popup ul{
+    padding: 20px;
+}
+
+
+.closePopup{
+    border: 1px solid black;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 40px;
+    font-size: 40px;
+    font-family: serif;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    transform: rotate(45deg);
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+.closePopup:hover {
+    transform: rotate(315deg);
+    transition: transform 0.5s;
+}
+
+@media screen and (max-width: 767px) {
+    .header {
+        font-size: 16px;
+        &__item {
+            flex-grow: 0.333;
+            width: auto;
+        }
+        &__menu { 
+            padding-right: 40px;
+            span {
+            right: 20px;
+            }
+    }
+    }
+    .hamburger {
+        width: 70%;
+        &_item::before, &_item::after {
+            width: 70%;
+        }
+    }
+
+    .closeHamburgerMenu {
+        width: 30%;
+    }
+
+    .hamburger-visible {
+    
+        .item-visible {
+            font-size: 20px;
+            transition: 0.6s ease-in-out;
+        }
+    }
+    .popup-content {
+        display: none;
+        h2 {
+            font-size: 20px;
+        }
+        p {
+            font-size: 16px;
+        }
+}
+    .cell {
+        font-size: 20px;
+        width: 37.5px;
+        height: 37.5px;
+    }
+    .cell-container {
+        width: 99vw;
+        height: 99vw;
+    }
+}
